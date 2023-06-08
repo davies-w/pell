@@ -26,7 +26,7 @@
 
 
         <p class="question textclr">How old are you?</p>
-    	<input class="age-input textclr" type="number" value="{{request.form['age']}}"name="age" /><br>
+    	<input class="age-input textclr" type="number" min="10" max="120" value="{{request.form['age']}}"name="age" /><br>
 
 
        {% set parent1 = '' %}
@@ -56,7 +56,7 @@
         <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="2" {{parent2}}/>Two Parents</label><br>
 
         <p class="question textclr">How many brothers and sisters do you live with?</p>
-    	<input class="age-input textclr" type="number" value="{{request.form['siblings']}}"  name="siblings"  /><br>
+    	<input class="age-input textclr" type="number" min="0" max="20"  value="{{request.form['siblings']}}"  name="siblings"  /><br>
 
         <p class="question read-more-q textclr">Where do you live?</p>
         <!--p class="read-more"><a href=""> Know more about where you live</a></p-->

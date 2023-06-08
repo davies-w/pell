@@ -78,7 +78,7 @@
         <label class="textclr"><input class="radio-input txtclr" type="radio" name="parents" id="parents3" value="3" onchange="autofill()" {{parent3}}/>Couple</label><br>
 
         <p class="question textclr">If a parent, how many children do you have?</p>
-    	<input class="age-input textclr" type="number"value="{{request.form['children']}}" id="children" name="children"  /><br>
+    	<input class="age-input textclr" type="number" min="0" max="20" value="{{request.form['children']}}" id="children" name="children"  /><br>
 
         <p class="question read-more-q textclr">Where do you live?</p>
         <!--p class="read-more"><a href=""> Know more about where you live</a></p-->
