@@ -1,7 +1,26 @@
+<script>
+ function autofill(){
+    var p1 = document.getElementById('parents1').checked;
+    var p2 = document.getElementById('parents2').checked;
+    var p3 = document.getElementById('parents3').checked;
+    var c = document.getElementById('children').value;
+    if(p1)
+    {
+       document.getElementById('children').value= 0;
+    }
+    if((p2 || p3) && c == '0')
+    {
+      document.getElementById('children').value= '';
+    }
+}
+</script>
+
 <!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
+
+
 
   <!-- Make it compatible to mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +34,7 @@
 <h1 class="appname textclr">Pell Eligibility Assessment</h1>
  <main class="login">
 
+     <p id="msg"></p>
      <!-- Action is where the data is sent. In our case, predict page.
      If action is omitted, it assumed to be the current page -->
     {% for err in result %}
@@ -22,7 +42,7 @@
       {{err}}
       </p>
     {% endfor %}
-    <form action="{{ url_for('i_pell') }}" method="post">
+    <form action="{{ url_for('i_pell') }}"  method="post">
 
 
 
@@ -53,12 +73,12 @@
 
          <!-- With more radio buttons here, this would be a mess! -->
         <p class="question textclr">What is your parental status?</p>
-        <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="1" {{parent1}}/>Not A Parent</label>
-        <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="2" {{parent2}}/>Single Parent</label><br>
-        <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="3" {{parent2}}/>Couple</label><br>
+        <label class="textclr"><input class="radio-input txtclr" type="radio" name="parents" id="parents1" value="1" onchange="autofill()" {{parent1}}/>Not A Parent</label>
+        <label class="textclr"><input class="radio-input txtclr" type="radio" name="parents" id="parents2" value="2" onchange="autofill()" {{parent2}}/>Single Parent</label><br>
+        <label class="textclr"><input class="radio-input txtclr" type="radio" name="parents" id="parents3" value="3" onchange="autofill()" {{parent3}}/>Couple</label><br>
 
         <p class="question textclr">If a parent, how many children do you have?</p>
-    	<input class="age-input textclr" type="number"value="{{request.form['children']}}"  name="children"  /><br>
+    	<input class="age-input textclr" type="number"value="{{request.form['children']}}" id="children" name="children"  /><br>
 
         <p class="question read-more-q textclr">Where do you live?</p>
         <!--p class="read-more"><a href=""> Know more about where you live</a></p-->
