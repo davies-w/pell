@@ -1,0 +1,41 @@
+<! DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Pell Eligibility Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+  <h1 class="appname textclr">Pell Eligibility Calculator</h1>
+  <main>
+    <section class="info-section">
+      <div class="info-desc">
+          <p class="textclr">This calculator will help you find out if you are eligible for a Pell Grant.</p>
+          <p class="textclr">
+          </p>
+          <p class="textclr"></p>
+          <p class="textclr">The assessment is easy, requires a few minutes to complete.</p>
+      </div>
+        <button class="start-btn" type="button" onclick="window.location.href='{{ url_for('questions') }}';">Start Assessment</button>
+    </section>
+    <!-- section class="news-section">
+      <div>
+        <p class="news-sec-head textclr">Education News</p>
+      </div>
+      <div id="news" class="news">
+        <a href="" id="news-link"><p id="news-title">New limits for 2023.</p></a>
+      </div>
+    </section -->
+  </main>
+  <footer>
+    <p></p>
+ </footer>
+ <!-- script type="text/javascript" src="{{ url_for('static',filename='script/script.js') }}"></script  -->
+</body>
+</html>
+

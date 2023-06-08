@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pell Eligibility Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<h1 class="appname textclr">Pell Eligibility Assessment</h1>
+ <main class="login">
+
+     <!-- Action is where the data is sent. In our case, predict page.
+     If action is omitted, it assumed to be the current page -->
+    {% for err in result %}
+      <p class="danger">
+      {{err}}
+      </p>
+    {% endfor %}
+    <form action="{{ url_for('pell')}}"method="post">
+
+
+        <p class="question textclr">How old are you?</p>
+    	<input class="age-input textclr" type="number" value="{{request.form['age']}}"name="age" /><br>
+
+
+       {% set parent1 = '' %}
+       {% set parent2 = '' %}
+       {% if request.form['parents'] == '1' %}
+          {% set parent1 = 'checked' %}
+       {% elif request.form['parents'] == '2' %}
+          {% set parent2 = 'checked' %}
+       {% endif %}
+
+       {% set live1 = '' %}
+       {% set live2 = '' %}
+       {% set live3 = '' %}
+       {% set live4 = '' %}
+       {% if request.form['live'] == '48DC' %}
+          {% set live1 = 'checked' %}
+       {% elif request.form['live'] == 'HI' %}
+          {% set live2 = 'checked' %}
+       {% elif request.form['live'] == 'AK' %}
+          {% set live3 = 'checked' %}
+       {% elif request.form['live'] == 'NOTUS' %}
+          {% set live4 = 'checked' %}
+       {% endif %}
+
+<!-- With more radio buttons here, this would be a mess! -->
+        <p class="question textclr">How many parents do you live with?</p>
+        <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="1" {{parent1}}/>One Parent</label>
+        <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="2" {{parent2}}/>Two Parents</label><br>
+
+        <p class="question textclr">How many brothers and sisters do you live with?</p>
+    	<input class="age-input textclr" type="number"value="{{request.form['siblings']}}"  name="siblings"  /><br>
+
+        <p class="question read-more-q textclr">Where do you live?</p>
+        <!--p class="read-more"><a href=""> Know more about where you live</a></p-->
+
+        <table>
+        <tr><td width="17%"></td><td align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="48DC" {{live1}}/>Continental US (48 states + DC)</label>
+        <tr><td></td><td  align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="HI" {{live3}}/>Hawaii</label><br>
+        <tr><TD></TD><td  align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="AK"  {{live3}}/>Alaska</label><br>
+        <tr><TD></TD><td align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="NOTUS" {{live4}}/>Somewhere Else</label><br>
+        </table>
+
+
+
+        <button type="submit" class="btn-submit" onclick="window.location.href='{{ url_for('pell') }}';">Get Results</button>
+    </form>
+  </main>
+ <footer>
+  <p></p>
+  </footer>
+
+</body>
+</html>
+
