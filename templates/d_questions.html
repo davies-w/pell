@@ -51,24 +51,22 @@
           {% set live4 = 'checked' %}
        {% endif %}
 
-<!-- With more radio buttons here, this would be a mess! -->
         <p class="question textclr">How many parents do you live with?</p>
         <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="1" {{parent1}}/>One Parent</label>
         <label class="textclr"><input class="radio-input textclr" type="radio" name="parents" value="2" {{parent2}}/>Two Parents</label><br>
 
         <p class="question textclr">How many brothers and sisters do you live with?</p>
-    	<input class="age-input textclr" type="number"value="{{request.form['siblings']}}"  name="siblings"  /><br>
+    	<input class="age-input textclr" type="number" value="{{request.form['siblings']}}"  name="siblings"  /><br>
 
         <p class="question read-more-q textclr">Where do you live?</p>
         <!--p class="read-more"><a href=""> Know more about where you live</a></p-->
 
         <table>
         <tr><td width="17%"></td><td align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="48DC" {{live1}}/>Continental US (48 states + DC)</label>
-        <tr><td></td><td  align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="HI" {{live3}}/>Hawaii</label><br>
+        <tr><td></td><td  align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="HI" {{live2}}/>Hawaii</label><br>
         <tr><TD></TD><td  align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="AK"  {{live3}}/>Alaska</label><br>
         <tr><TD></TD><td align="left"><label class="textclr"><input class="radio-input textclr" type="radio" name="live" value="NOTUS" {{live4}}/>Somewhere Else</label><br>
         </table>
-
 
 
         <button type="submit" class="btn-submit" onclick="window.location.href='{{ url_for('d_pell') }}';">Get Results</button>
